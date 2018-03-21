@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: url("https://images.unsplash.com/photo-1513617855986-6ad7b0dfb9f5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0b833949b5fc338dc27d82cc2ee0549f&auto=format&fit=crop&w=667&q=80") center/cover;
+  font-family: 'Finger paint', cursive;
+  text-align: center;
+}
+
+#board {
+  height: 92vh;
+  width: 92vw;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+#board h1 {
+  color: #e84118;
+  font-size: 90px;
+  text-transform: uppercase;
+  text-shadow: 3px 3px black;
+}
+
+#board .column-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#board .column-container .column {
+  min-height: 55vh;
+  min-width: 26vw;
+  margin: 15px;
+  padding: 10px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center;
+  background: rgba(0, 0, 0, 0.9);
+  border: 6px solid #273c75;
+  position: relative;
+}
+
+#board .column-container .column .column-title {
+  color: #fbc531;
+  font-size: 30px;
+  text-shadow: 2px 2px black;
+}
+
+#board .column-container .column .column-card-list {
+  list-style: none;
+}
+
+#board .column-container .column .btn-delete {
+  min-height: 0;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+}
+
+#board .column-container .column .btn-delete:hover {
+  background: #e84118;
+}
+
+#board .column-container .column .card {
+  position: relative;
+  min-height: 50px;
+  min-width: 24vw;
+  max-width: 40vw;
+  display: block;
+  margin: 5px;
+  padding: 5px 40px;
+  background: blanchedalmond;
+  border: 1px solid white;
+  font-size: 22px;
+  line-height: 50px;
+  color: #273c75;
+  overflow: hidden;
+}
+
+#board .column-container .column .card button {
+  font-size: 10px;
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  top: 5px;
+  right: -5px;
+}
+
+button {
+  color: white;
+  background: black;
+  font-family: 'Finger Paint', cursive;
+  font-size: 24px;
+  padding: 10px;
+  max-width: 400px;
+  margin: 10px;
+  min-height: 60px;
+}
+
+button:hover {
+  background: #273c75;
+}
+/*# sourceMappingURL=style.css.map */
