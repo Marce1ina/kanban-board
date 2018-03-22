@@ -39,6 +39,12 @@ body {
         flex-direction: row;
         flex-grow: 1;
         flex-wrap: wrap;
+        .column-placeholder {
+            border: 3px dashed white;
+            min-height: 55vh;
+            min-width: 26vw;
+            margin: 15px;
+        }
         .column {
             min-height: 55vh;
             min-width: 26vw;
@@ -74,14 +80,13 @@ body {
             }
             .card {
                 position: relative;
-                min-height: 50px;;
+                min-height: 50px;
                 min-width: 24vw;
                 max-width: 40vw;
                 display: block;
                 margin: 5px;
                 padding: 5px 40px;
                 background: blanchedalmond;
-                border: 1px solid white;
                 font-size: 22px;
                 line-height: 50px;
                 color: $blue;
@@ -94,6 +99,14 @@ body {
                     top: 5px;
                     right: -5px;
                 }
+            }
+            .card-placeholder {
+                min-height: 50px;
+                min-width: 24vw;
+                max-width: 40vw;
+                display: block;
+                border: 3px dashed white;
+                margin: 5px;
             }
         }
     }

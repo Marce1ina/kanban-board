@@ -22,6 +22,7 @@ $(function () {
             var $columnCardList = $('<ul>').addClass('column-card-list');
             var $columnDelete = $('<button>').addClass('btn-delete').text('x');
             var $columnAddCard = $('<button>').addClass('add-card').text('Add a card');
+            var $cardPlaceholder = $('<li>').addClass('card-placeholder');
 
             $columnDelete.click(function () {
                 self.removeColumn();
@@ -33,7 +34,7 @@ $(function () {
             $column.append($columnTitle)
                 .append($columnDelete)
                 .append($columnAddCard)
-                .append($columnCardList);
+                .append($columnCardList.append($cardPlaceholder));
             return $column;
         }
     }
@@ -88,7 +89,11 @@ $(function () {
     function initSortable() {
         $('.column-card-list').sortable({
             connectWith: '.column-card-list',
-            placeholder: 'card-placeholder'
+            placeholder: 'card-placeholder',
+            dropOnEmpty: true
+        }).disableSelection();
+        $('.column-container').sortable({
+            placeholder: 'column-placeholder'
         }).disableSelection();
     }
 
