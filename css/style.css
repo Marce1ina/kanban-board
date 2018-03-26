@@ -5,22 +5,19 @@
 }
 
 body {
+  padding: 5%;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
       justify-content: center;
   -ms-flex-align: center;
       align-items: center;
-  height: 100vh;
-  width: 100vw;
   background: url("https://images.unsplash.com/photo-1513617855986-6ad7b0dfb9f5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0b833949b5fc338dc27d82cc2ee0549f&auto=format&fit=crop&w=667&q=80") center/cover;
   font-family: 'Finger paint', cursive;
   text-align: center;
 }
 
 #board {
-  height: 92vh;
-  width: 92vw;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
@@ -61,10 +58,10 @@ body {
 }
 
 #board .column-container .column {
-  min-height: 55vh;
-  min-width: 26vw;
+  min-height: 400px;
+  min-width: 300px;
   margin: 15px;
-  padding: 10px;
+  padding: 55px 20px 20px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: justify;
@@ -86,6 +83,8 @@ body {
 
 #board .column-container .column .column-card-list {
   list-style: none;
+  min-height: 50px;
+  min-width: 24vw;
 }
 
 #board .column-container .column .btn-delete {
@@ -93,6 +92,7 @@ body {
   height: 40px;
   width: 40px;
   padding: 0;
+  margin: 10px;
   position: absolute;
   top: 0;
   right: 0;
@@ -107,15 +107,18 @@ body {
   position: relative;
   min-height: 50px;
   min-width: 24vw;
-  max-width: 40vw;
   display: block;
-  margin: 5px;
+  margin: 5px 0;
   padding: 5px 40px;
   background: blanchedalmond;
   font-size: 22px;
   line-height: 50px;
   color: #273c75;
   overflow: hidden;
+}
+
+#board .column-container .column .card p {
+  margin: 0;
 }
 
 #board .column-container .column .card button {
@@ -143,7 +146,7 @@ button {
   font-size: 24px;
   padding: 10px;
   max-width: 400px;
-  margin: 10px;
+  margin: 25px 0;
   min-height: 60px;
 }
 
