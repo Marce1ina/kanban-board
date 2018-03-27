@@ -30,7 +30,7 @@ $(function () {
         cards.forEach(function (card) {
             var cardObj = new Card(card.id, card.name, card.bootcamp_kanban_column_id);
             col.addCard(cardObj);
-        })
+        });
     }
 
 
@@ -49,11 +49,11 @@ $(function () {
             var $columnCardList = $('<ul>').addClass('column-card-list');
             var $columnDelete = $('<button>').addClass('btn-delete').text('x');
             var $columnAddCard = $('<button>').addClass('add-card').text('Add a card');
-            var $cardPlaceholder = $('<li>').addClass('card-placeholder');
 
             $columnDelete.click(function () {
                 self.removeColumn();
             });
+
             $columnAddCard.click(function (event) {
                 var cardName = prompt("Enter the name of the card");
                 event.preventDefault();
@@ -67,6 +67,22 @@ $(function () {
                     success: function (response) {
                         var card = new Card(response.id, cardName);
                         self.addCard(card);
+                    }
+                });
+            });
+
+            $columnTitle.dblclick(function () {
+                var newColumnName = prompt('Enter new column name');
+                if (newColumnName === (null || '')) newColumnName = 'No name given';
+                $.ajax({
+                    url: baseUrl + '/column/' + self.id,
+                    method: 'PUT',
+                    data: {
+                        id: self.id,
+                        name: newColumnName
+                    },
+                    success: function (response) {
+                        $columnTitle.text(newColumnName);
                     }
                 });
             });
@@ -92,7 +108,7 @@ $(function () {
                     self.$element.remove();
                 }
             });
-        }
+        },
     };
 
 
@@ -113,6 +129,23 @@ $(function () {
             $cardDelete.click(function () {
                 self.removeCard();
             });
+
+            //$cardDescription.dblclick(function () {
+                // var newCardDescription = prompt('Enter new card description');
+                // if (newCardDescription === (null || '')) newCardDescription = 'No description given';
+                // $.ajax({
+                //     url: baseUrl + '/card/' + self.id,
+                //     method: 'PUT',
+                //     data: {
+                //         id: self.id,
+                //         name: newCardDescription,
+                //         bootcamp_kanban_column_id: self.closest('.column')
+                //     },
+                //     success: function (response) {
+                //         $cardDescription.text(newCardDescription);
+                //     }
+                // });
+            //});
 
             $card.append($cardDelete)
                 .append($cardDescription);
@@ -150,10 +183,9 @@ $(function () {
         $('.column-card-list').sortable({
             connectWith: '.column-card-list',
             placeholder: 'card-placeholder',
-            dropOnEmpty: true
         }).disableSelection();
         $('.column-container').sortable({
-            placeholder: 'column-placeholder'
+            placeholder: 'column-placeholder',
         }).disableSelection();
     }
 
