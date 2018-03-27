@@ -6,6 +6,7 @@ $yellow: #fbc531;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Finger paint', cursive;
 }
 
 body {
@@ -14,7 +15,6 @@ body {
     justify-content: center;
     align-items: center;
     background: url("https://images.unsplash.com/photo-1513617855986-6ad7b0dfb9f5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0b833949b5fc338dc27d82cc2ee0549f&auto=format&fit=crop&w=667&q=80") center/cover;
-    font-family: 'Finger paint', cursive;
     text-align: center;
 }
 
@@ -58,6 +58,10 @@ body {
                 color: $yellow;
                 font-size: 30px;
                 text-shadow: 2px 2px black;
+                transition: 0.15s;
+                &:hover {
+                    color: #ff9100;
+                }
             }
             .column-card-list {
                 list-style: none;
@@ -90,6 +94,10 @@ body {
                 line-height: 50px;
                 color: $blue;
                 overflow: hidden;
+                transition: 0.15s;
+                &:hover {
+                    background: whitesmoke;
+                }
                 p {
                     margin: 0;
                 }
@@ -123,6 +131,7 @@ button {
     max-width: 400px;
     margin: 25px 0;
     min-height: 60px;
+    transition: 0.15s;
     &:hover {
         background: #273c75;
     }
