@@ -71,7 +71,7 @@ $(function () {
                 });
             });
 
-            $columnTitle.dblclick(function () {
+            function changeColumnTitle() {
                 var newColumnName = prompt('Enter new column name');
                 if (newColumnName === (null || '')) newColumnName = 'No name given';
                 $.ajax({
@@ -85,7 +85,9 @@ $(function () {
                         $columnTitle.text(newColumnName);
                     }
                 });
-            });
+            }
+
+            $columnTitle.on('touchend dblclick', changeColumnTitle);
 
             $column.append($columnTitle)
                 .append($columnDelete)
@@ -131,7 +133,9 @@ $(function () {
                 self.removeCard();
             });
 
-            $cardDescription.dblclick(function () {
+            $card.on('touchend dblclick', changeCardDescription);
+
+            function changeCardDescription () {
                 var newCardDescription = prompt('Enter new card description');
                 if (newCardDescription === (null || '')) newCardDescription = 'No description given';
                 $.ajax({
@@ -146,7 +150,7 @@ $(function () {
                         $cardDescription.text(newCardDescription);
                     }
                 });
-            });
+            };
 
             $card.append($cardDelete)
                 .append($cardDescription);
