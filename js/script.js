@@ -44,7 +44,7 @@ $(function () {
         this.$element = createColumn();
 
         function createColumn() {
-            var $column = $('<div>').addClass('column');
+            var $column = $('<div>').addClass('column').data('id', id);
             var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
             var $columnCardList = $('<ul>').addClass('column-card-list');
             var $columnDelete = $('<button>').addClass('btn-delete').text('x');
@@ -89,6 +89,20 @@ $(function () {
 
             $columnTitle.on('touchend dblclick', changeColumnTitle);
 
+            $columnCardList.on("sortreceive", function (event, ui) {
+                var cardId = ui.item.data('id');
+                var cardName = ui.item.data('description');
+                $.ajax({
+                    url: baseUrl + '/card/' + cardId,
+                    method: 'PUT',
+                    data: {
+                        id: cardId,
+                        name: cardName,
+                        bootcamp_kanban_column_id: id
+                    },
+                });
+            });
+
             $column.append($columnTitle)
                 .append($columnDelete)
                 .append($columnAddCard)
@@ -100,7 +114,6 @@ $(function () {
     Column.prototype = {
         addCard: function (card) {
             this.$element.children('ul').append(card.$element);
-            card.parentColumnId = this.id;
         },
         removeColumn: function () {
             var self = this;
@@ -121,11 +134,11 @@ $(function () {
         var self = this;
 
         this.id = id;
-        this.name = name || 'No name given';
+        this.name = name || 'No description given';
         this.$element = createCard();
 
         function createCard() {
-            var $card = $('<li>').addClass('card');
+            var $card = $('<li>').addClass('card').data('id', id).data('description', name);
             var $cardDescription = $('<p>').addClass('card-description').text(self.name);
             var $cardDelete = $('<button>').addClass('btn-delete').text('x');
 
@@ -135,22 +148,23 @@ $(function () {
 
             $card.on('touchend dblclick', changeCardDescription);
 
-            function changeCardDescription () {
-                var newCardDescription = prompt('Enter new card description');
-                if (newCardDescription === (null || '')) newCardDescription = 'No description given';
+            function changeCardDescription() {
+                var columnId = $card.closest('.column').data('id');
+                var newCardDescription = prompt('Enter new card description') || 'No description given';
                 $.ajax({
                     url: baseUrl + '/card/' + self.id,
                     method: 'PUT',
                     data: {
                         id: self.id,
                         name: newCardDescription,
-                        bootcamp_kanban_column_id: self.parentColumnId
+                        bootcamp_kanban_column_id: columnId
                     },
                     success: function (response) {
                         $cardDescription.text(newCardDescription);
+                        $card.data('description', newCardDescription);
                     }
                 });
-            };
+            }
 
             $card.append($cardDelete)
                 .append($cardDescription);
