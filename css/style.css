@@ -35,6 +35,12 @@ body {
   text-shadow: 3px 3px black;
 }
 
+@media (max-width: 450px) {
+  #board h1 {
+    font-size: 70px;
+  }
+}
+
 #board .column-container {
   display: -ms-flexbox;
   display: flex;
@@ -82,8 +88,10 @@ body {
   transition: 0.15s;
 }
 
-#board .column-container .column .column-title:hover {
-  color: #ff9100;
+@media (min-width: 900px) {
+  #board .column-container .column .column-title:hover {
+    color: #ff9100;
+  }
 }
 
 #board .column-container .column .column-card-list {
@@ -104,8 +112,10 @@ body {
   border-radius: 50%;
 }
 
-#board .column-container .column .btn-delete:hover {
-  background: #e84118;
+@media (min-width: 900px) {
+  #board .column-container .column .btn-delete:hover {
+    background: #e84118;
+  }
 }
 
 #board .column-container .column .card {
@@ -123,8 +133,10 @@ body {
   transition: 0.15s;
 }
 
-#board .column-container .column .card:hover {
-  background: whitesmoke;
+@media (min-width: 900px) {
+  #board .column-container .column .card:hover {
+    background: lightblue;
+  }
 }
 
 #board .column-container .column .card p {
@@ -161,7 +173,9 @@ button {
   transition: 0.15s;
 }
 
-button:hover {
-  background: #273c75;
+@media (min-width: 900px) {
+  button:hover {
+    background: #273c75;
+  }
 }
 /*# sourceMappingURL=style.css.map */
