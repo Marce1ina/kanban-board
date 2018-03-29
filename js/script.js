@@ -98,6 +98,7 @@ $(function () {
     Column.prototype = {
         addCard: function (card) {
             this.$element.children('ul').append(card.$element);
+            card.parentColumnId = this.id;
         },
         removeColumn: function () {
             var self = this;
@@ -130,22 +131,22 @@ $(function () {
                 self.removeCard();
             });
 
-            //$cardDescription.dblclick(function () {
-                // var newCardDescription = prompt('Enter new card description');
-                // if (newCardDescription === (null || '')) newCardDescription = 'No description given';
-                // $.ajax({
-                //     url: baseUrl + '/card/' + self.id,
-                //     method: 'PUT',
-                //     data: {
-                //         id: self.id,
-                //         name: newCardDescription,
-                //         bootcamp_kanban_column_id: self.closest('.column')
-                //     },
-                //     success: function (response) {
-                //         $cardDescription.text(newCardDescription);
-                //     }
-                // });
-            //});
+            $cardDescription.dblclick(function () {
+                var newCardDescription = prompt('Enter new card description');
+                if (newCardDescription === (null || '')) newCardDescription = 'No description given';
+                $.ajax({
+                    url: baseUrl + '/card/' + self.id,
+                    method: 'PUT',
+                    data: {
+                        id: self.id,
+                        name: newCardDescription,
+                        bootcamp_kanban_column_id: self.parentColumnId
+                    },
+                    success: function (response) {
+                        $cardDescription.text(newCardDescription);
+                    }
+                });
+            });
 
             $card.append($cardDelete)
                 .append($cardDescription);
